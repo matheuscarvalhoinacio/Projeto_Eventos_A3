@@ -1,0 +1,15 @@
+.container_Icons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card_icons{
+    margin: 1em;
+    padding: 1em;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    text-decoration: none;
+    list-style: none;
+    color: black;
+}

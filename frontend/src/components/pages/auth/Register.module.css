@@ -1,0 +1,98 @@
+.register_container {
+    min-height: 100vh;
+    background: linear-gradient(to right, #e0f2f1, #f1f8e9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 2.5rem 3rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.card h1 {
+    text-align: center;
+    color: #F23D5E;
+    margin-bottom: 2rem;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+.field label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.field input,
+.field select {
+    padding: 0.75rem;
+    border: 1px solid #F23D5E;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: #F23D5E;
+}
+
+.submitBtn {
+    background-color: #F23D5E;
+    color: white;
+    padding: 0.9rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submitBtn:hover {
+    background-color: #F25260;
+}
+
+.footerText {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #555;
+}
+
+.footerText a {
+    color: #F23D5E;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.footerText a:hover {
+    text-decoration: underline;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .card {
+        padding: 2rem 1.5rem;
+    }
+
+    .submitBtn {
+        font-size: 1rem;
+    }
+}

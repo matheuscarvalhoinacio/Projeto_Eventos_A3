@@ -1,0 +1,136 @@
+/* Container principal */
+.container {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+/* Cabeçalho */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Botão de voltar */
+.backButton {
+    font-size: 16px;
+    text-decoration: none;
+    color: #F23D5E;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: bold;
+}
+
+.backButton:hover {
+    text-decoration: underline;
+}
+
+/* Título principal */
+h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Seções */
+.section {
+    margin-bottom: 35px;
+}
+
+.section h2 {
+    font-size: 1.5rem;
+    color: #F23D5E;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+/* Lista */
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Cartões */
+.card {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+    margin: 0 0 8px;
+    color: #333;
+}
+
+.card p {
+    margin: 4px 0;
+    color: #555;
+}
+
+/* Link que parece botão */
+.linkButton {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.linkButton:hover h3 {
+    color: #F23D5E;
+}
+
+.buttonText {
+    color: #F23D5E;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+/* Botão confirmar */
+.confirmButton {
+    background-color: #F23D5E;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.confirmButton:hover {
+    background-color: #d9304d;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    h1 {
+        font-size: 1.7rem;
+        text-align: left;
+    }
+
+    .section h2 {
+        font-size: 1.3rem;
+    }
+}

@@ -1,10 +1,19 @@
-const getToken = (req) =>{
+const getToken = (req) => {
+    const authHeader = req.headers.authorization;
 
-    const authHeader = req.headers.authorization 
+    if (!authHeader) {
+        return null;  
+    }
 
-    const token = authHeader.split(' ')[1]
+    const parts = authHeader.split(' ');
 
-    return token    
-}   
+    if (parts.length !== 2) {
+        return null;  
+    }
 
-module.exports = getToken
+    const token = parts[1];
+
+    return token;
+};
+
+module.exports = getToken;

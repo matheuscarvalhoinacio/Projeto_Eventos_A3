@@ -1,0 +1,76 @@
+.container {
+  max-width: 650px;
+  margin: 3em auto;
+  padding: 2em;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+h1 {
+  color: #F23D5E;
+  font-size: 2.5em;
+  margin-bottom: 1.5em;
+}
+
+.profileForm {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1.1em;
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+input {
+  padding: 0.9em;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  margin-bottom: 1em;
+  background-color: #f9f9f9;
+}
+
+input:focus {
+  border-color: #F23D5E;
+  outline: none;
+  background-color: #fff;
+}
+
+.saveButton {
+  background-color: #F25260;
+  color: #fff;
+  padding: 1em 2em;
+  font-size: 1.1em;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.saveButton:hover {
+  background-color: #F23D5E;
+  transform: translateY(-3px);
+}
+
+input:focus {
+  box-shadow: 0 0 10px rgba(242, 61, 94, 0.5);
+}
+
+.saveButton:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(242, 61, 94, 0.7);
+}

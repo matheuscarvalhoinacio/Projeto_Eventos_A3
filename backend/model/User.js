@@ -9,11 +9,6 @@ const User = mongoose.model(
       email: { type: String, required: true, unique: true },
       password: { type: String, required: true },
       phone: { type: String, required: true },
-      tipo: {
-        type: String,
-        enum: ["aluno", "professor", "faculdade", "produtor rural"],
-        required: true,
-      },
     },
     { timestamps: true }
   )

@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 module.exports = class UserController {
   //CRIAR USUARIO
   static async register(req, res) {
-    const { name, email, password, confirmpassword, phone, tipo } = req.body;
+    const { name, email, password, confirmpassword, phone } = req.body;
     if (!name) {
       return res.status(422).json({ message: "NOME OBRIGATÓRIO" });
     }
@@ -27,9 +27,6 @@ module.exports = class UserController {
     if (!phone) {
       return res.status(422).json({ message: "Telefone OBRIGATÓRIO" });
     }
-    if (!tipo) {
-      return res.status(422).json({ message: "Tipo OBRIGATÓRIO" });
-    }
 
     const userExists = await User.findOne({ email: email });
     if (userExists) {
@@ -45,7 +42,6 @@ module.exports = class UserController {
       email,
       password: hashedPassword,
       phone,
-      tipo,
     });
 
     try {

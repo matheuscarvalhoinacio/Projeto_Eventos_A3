@@ -1,0 +1,73 @@
+.container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: 2rem auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtext {
+    text-align: center;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .fieldGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .fieldGroup label {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .fieldGroup input,
+  .fieldGroup textarea {
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .addressFieldset {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+  
+  .addressFieldset legend {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  .submitBtn {
+    background-color: #F23D5E;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .submitBtn:hover {
+    background-color: #F25260;
+  }
+  

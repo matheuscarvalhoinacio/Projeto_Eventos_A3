@@ -1,10 +1,7 @@
-import React from "react";
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-
-import Input from "../../form/Input";
 import styles from "./Login.module.css";
-import Img from "../../../img/login.png";
+import Img from "../../../img/logo.png";
 import { Context } from "../../../context/UserContext";
 
 const Login = () => {
@@ -14,41 +11,52 @@ const Login = () => {
   function handleOnChange(e) {
     setUser({ ...user, [e.target.name]: e.target.value });
   }
-  function handleSubmit(e){
+
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log(user)
-    login(user)
+    console.log(user);
+    login(user);
   }
+
   return (
     <section className={styles.login_container}>
-      <span
+      <div
         className={styles.container_img}
         style={{ backgroundImage: `url(${Img})` }}
-      ></span>
+      ></div>
+
       <div className={styles.conteudo}>
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit}>
-          <Input
-            text="E-mail"
-            type="email"
-            name="email"
-            placeholder="Digite o seu e-mail"
-            handleOnChange={handleOnChange}
+        <h1>Acessar Conta</h1>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.inputGroup}>
+            <label htmlFor="email">E-mail</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Digite seu e-mail"
+              onChange={handleOnChange}
+              required
+            />
+          </div>
 
-          />
-          <Input
-            text="Senha"
-            type="password"
-            name="password"
-            placeholder="Digite sua senha"
-            handleOnChange={handleOnChange}
+          <div className={styles.inputGroup}>
+            <label htmlFor="password">Senha</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Digite sua senha"
+              onChange={handleOnChange}
+              required
+            />
+          </div>
 
-          />
-
-          <input type="submit" value="Entrar" />
+          <input type="submit" value="Entrar" className={styles.submitBtn} />
         </form>
-        <p>
-          Não tem conta? <Link>CLIQUE AQUI </Link>
+
+        <p className={styles.registerLink}>
+          Não tem conta? <Link to="/register">Clique aqui</Link>
         </p>
       </div>
     </section>

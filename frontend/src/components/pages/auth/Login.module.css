@@ -1,44 +1,89 @@
-.login_container,
-.container_img,
-.conteudo {
-    display: flex;   
+.login_container {
+    display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     height: 100vh;
-}
-.conteudo {
-    flex-direction: column;
-    background-color: #fff;
-    height: 50vh;
-    width: 30vw;
-    border-radius: 0 1em 1em 0;
-}
-.conteudo input[type='submit'] {
-    border-radius: 8px;
-    background-color: #25b456;
-    color: #fff;
-    border: none;
-    min-height: 2.5em;
-    padding: 1em;
-    width: 420px;
-    cursor: pointer;
-    font-size: 1.1em;
-    font-weight: bold;
-}
-
-.conteudo input[type='submit']:hover {
-    
-    background-color: #1c8a42;
-}
-
-
-.container_img {
-    width: 30vw;
-    height: 50vh;
+    background-color: #f4f4f4;
+  }
+  
+  .container_img {
+    width: 35vw;
+    height: 60vh;
     background-size: cover;
     background-position: center;
-    background-color: #f17d9c;
-    border-radius:  1em  0  0 1em;
-
-}
+    border-radius: 1em 0 0 1em;
+  }
+  
+  .conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #fff;
+    padding: 2rem;
+    width: 30vw;
+    height: 60vh;
+    border-radius: 0 1em 1em 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .conteudo h1 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #333;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputGroup label {
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+    color: #444;
+  }
+  
+  .inputGroup input {
+    padding: 0.8rem;
+    border: 1px solid #F23D5E;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  
+  .submitBtn {
+    background-color: #F23D5E;
+    color: white;
+    border: none;
+    padding: 0.9rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submitBtn:hover {
+    background-color: #F25260;
+  }
+  
+  .registerLink {
+    text-align: center;
+    margin-top: 1rem;
+    color: #555;
+  }
+  
+  .registerLink a {
+    color: #F23D5E;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .registerLink a:hover {
+    text-decoration: underline;
+  }
   
