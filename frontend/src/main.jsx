@@ -15,6 +15,7 @@ import Profile from "./components/layout/Profile/Profile.jsx";
 import Suggestion from "./components/layout/Suggestion/Suggestion.jsx";
 import SolutionDetail from "./components/layout/Solutions/SolutionDetail.jsx";
 import SolutionDetailPage from "./components/layout/Solutions/SolutionDetailPage.jsx";
+import Result from "./components/layout/Result/Result.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +34,7 @@ const router = createBrowserRouter([
           { path: "/suggestion/:id", element: <Suggestion /> },
           { path: "/solutions/:id", element: <SolutionDetail /> },
           { path: "/solution/:id", element: <SolutionDetailPage /> },
+          { path: "/result/:id", element: <Result /> },
         ],
       },
       { path: "/details/:id", element: <ReportPage /> },

@@ -29,5 +29,17 @@ export default function Suggestion() {
       console.log(error);
     }
   }
-  return { createSuggestion, GetSuggestion };
+  async function SetStatus(id, status) {
+    try {
+      const response = await api.patch(`/Suggestion/SetStatus/${id}`, {
+        status,
+      });
+      return response.data;
+    } catch (error) {
+      console.log("Erro ao atualizar status:", error);
+      throw error;
+    }
+  }
+
+  return { createSuggestion, GetSuggestion, SetStatus };
 }

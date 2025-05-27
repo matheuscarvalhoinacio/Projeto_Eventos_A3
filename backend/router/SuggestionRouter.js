@@ -10,6 +10,9 @@ router.post("/create", VerifgToken, SuggestionController.create);
 router.get("/allSuggestion", VerifgToken, SuggestionController.allSuggestion);
 router.get("/GetSuggestion/:id", SuggestionController.GetSuggestion);
 router.get("/GetOneSuggestion/:id", SuggestionController.GetOneSuggestion);
+router.get("/GetSuggestionUset", SuggestionController.GetSuggestionUset);
+router.patch("/SetStatus/:id", SuggestionController.SetStatus);
+
 
 
 

@@ -1,7 +1,7 @@
 import React  from "react";
 import style from "./Card.module.css";
 import { Link } from "react-router-dom";
-import { FiMapPin, FiUser, FiPhone } from "react-icons/fi";
+import { FiMapPin, FiUser } from "react-icons/fi";
 
 const truncateText = (text, maxLength = 100) => {
   if (!text) return "";
@@ -31,7 +31,6 @@ const Card = ({ report }) => {
             </p>
             <p>
               <FiUser /> {item.user?.name} <br />
-              <FiPhone /> {item.user?.phone}
             </p>
             <Link to={`/details/${item._id}`} className={style.button}>
               Leia mais

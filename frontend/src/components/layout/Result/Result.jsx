@@ -16,7 +16,7 @@ L.Icon.Default.mergeOptions({
     "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png",
 });
 
-const ReportPage = () => {
+const Result = () => {
   const { id } = useParams();
   const [report, setReport] = useState(null);
   const [coordinates, setCoordinates] = useState(null);
@@ -82,7 +82,7 @@ const ReportPage = () => {
         <div className={styles.info}>
           <p>
             <FaUser className={styles.icon} />
-            <strong>Reportado por:</strong> {report.user.name} 
+            <strong>Reportado por:</strong> {report.user.name} - {" "} {report.user.phone}
           </p>
           <p>
             <small>
@@ -119,6 +119,7 @@ const ReportPage = () => {
       </div>
 
       <div className={styles.header}>
+
         <Link to={`/suggestion/${id}`} className={styles.suggestionButton}>
           Fazer uma Sugestão
         </Link>
@@ -127,4 +128,4 @@ const ReportPage = () => {
   );
 };
 
-export default ReportPage;
+export default Result;

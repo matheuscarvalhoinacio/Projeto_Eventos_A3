@@ -6,6 +6,7 @@ import Api from "../../../util/api";
 
 const MyAppointments = () => {
   const [report, setReport] = useState({ getAllUser: [] });
+  const [requestsForMe, setRequestsForMe] = useState([]);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -25,27 +26,22 @@ const MyAppointments = () => {
         });
     }
   }, []);
-
-  const requestsForMe = [
-    {
-      id: 1,
-      title: "Manutenção de Computador",
-      requester: "Ana Souza",
-      date: "2025-05-11",
-      confirmed: false,
-    },
-    {
-      id: 2,
-      title: "Aula de Matemática",
-      requester: "Carlos Lima",
-      date: "2025-05-13",
-      confirmed: false,
-    },
-  ];
-
-  const handleConfirm = (id) => {
-    alert(`Agendamento ${id} confirmado!`);
-  };
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      Api.get("/Suggestion/GetSuggestionUset", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+        .then((response) => {
+          setRequestsForMe(response.data);
+        })
+        .catch((error) => {
+          console.error("Erro ao buscar dados:", error.response.data);
+        });
+    }
+  }, []);
 
   return (
     <section className={styles.container}>
@@ -83,23 +79,64 @@ const MyAppointments = () => {
         <h2>
           <FaUserCheck /> Soluções que eu enviei
         </h2>
-        {requestsForMe.length === 0 ? (
-          <p>Você ainda não enviou nenhuma solução.</p>
+        {!requestsForMe?.getAllUser || requestsForMe.getAllUser.length === 0 ? (
+          <p>Você ainda não fez nenhum agendamento.</p>
         ) : (
           <ul className={styles.list}>
-            {requestsForMe.map((item) => (
-              <li key={item.id} className={styles.card}>
-                <h3>{item.title}</h3>
-                <p>Para: {item.requester}</p>
-                <p>Data: {item.date}</p>
-                <button
-                  className={styles.confirmButton}
-                  onClick={() => handleConfirm(item.id)}
+            {requestsForMe.getAllUser.map((item) => {
+              return item.status === "aceito" ? (
+                <Link to={`/result/${item.reportID}` }   className={styles.linkButton} >
+                  {" "}
+                  <li
+                    key={item._id}
+                    className={
+                      item.status === "aceito"
+                        ? styles.cardAccepted
+                        : styles.cardSolution
+                    }
+                  >
+                    <h3>{item.title}</h3>
+                    <p>{item.description}</p>
+                    <p
+                      className={
+                        item.status === "aceito"
+                          ? styles.statusAccepted
+                          : styles.status
+                      }
+                    >
+                      {item.status}
+                    </p>
+                    <p className={styles.date}>
+                      Data: {new Date(item.createdAt).toLocaleDateString()}
+                    </p>
+                  </li>
+                </Link>
+              ) : (
+                <li
+                  key={item._id}
+                  className={
+                    item.status === "aceito"
+                      ? styles.cardAccepted
+                      : styles.cardSolution
+                  }
                 >
-                  Confirmar
-                </button>
-              </li>
-            ))}
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <p
+                    className={
+                      item.status === "aceito"
+                        ? styles.statusAccepted
+                        : styles.status
+                    }
+                  >
+                    {item.status}
+                  </p>
+                  <p className={styles.date}>
+                    Data: {new Date(item.createdAt).toLocaleDateString()}
+                  </p>
+                </li>
+              );
+            })}
           </ul>
         )}
       </div>

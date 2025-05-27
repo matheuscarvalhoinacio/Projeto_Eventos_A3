@@ -7,10 +7,10 @@ const Context = createContext();
 function UserProvider({ children }) {
   const { authenticated, register, logout, login, loading } = useAuth();
   const {search,report,CardSearch,CreateReport} = Report();
-  const {createSuggestion } = Suggestion();
+  const {createSuggestion,SetStatus } = Suggestion();
 
   return (
-    <Context.Provider value={{ authenticated, register, logout, login, loading,search,report,CardSearch,CreateReport,createSuggestion}}>
+    <Context.Provider value={{ authenticated, register, logout, login, loading,search,report,CardSearch,CreateReport,createSuggestion,SetStatus}}>
       {children}
     </Context.Provider>
   );

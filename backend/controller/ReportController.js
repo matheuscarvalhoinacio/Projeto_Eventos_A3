@@ -46,7 +46,30 @@ module.exports = class ReportControllerController {
       return res.status(500).json({ message: err });
     }
   }
+  static async getReport(req, res) {
+    const { id } = req.params;
 
+    try {
+      const report = await Report.findById(id);
+
+      if (!report) {
+        return res.status(404).json({ message: "Relatório não encontrado." });
+      }
+
+      return res.status(200).json({ report });
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
+
+  static async getRoom(req, res) {
+    try {
+      const report = await Report.find().sort("-createdAt").limit(6);
+      return res.status(201).json({ report: report });
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  }
   static async getAll(req, res) {
     const status = "em aberto";
     try {

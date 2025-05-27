@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import Api from "../../../util/api";
 import { FaArrowLeft } from "react-icons/fa";
 import styles from "./SolutionDetailPage.module.css";
-
+import {Context} from "../../../context/UserContext";
 const SolutionDetailPage = () => {
   const { id } = useParams();
   const [solution, setSolution] = useState(null);
-  const navigate = useNavigate();
-
+  const { SetStatus } = useContext(Context);
+  const navigate = useNavigate()
   useEffect(() => {
     const token = localStorage.getItem("token");
     Api.get(`/Suggestion/GetOneSuggestion/${id}`, {
@@ -24,20 +24,11 @@ const SolutionDetailPage = () => {
       });
   }, [id]);
 
-  const handleStatusUpdate = (newStatus) => {
-    const token = localStorage.getItem("token");
-    Api.patch(
-      `/Suggestion/UpdateStatus/${id}`,
-      { status: newStatus },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
+  const handleStatusUpdate = (status) => {
+    SetStatus(id, status)
       .then(() => {
-        alert(`Solução ${newStatus === 'aceito' ? 'aceita' : 'recusada'} com sucesso!`);
-        navigate("/myAppointments"); // Volta para a lista
+        alert(`Status ${status} aplicado com sucesso`);
+        navigate("/myAppointments");
       })
       .catch((error) => {
         console.error("Erro ao atualizar status:", error);
@@ -64,10 +55,20 @@ const SolutionDetailPage = () => {
 
       <div className={styles.detailCard}>
         <h2>{solution.title}</h2>
-        <p><strong>Descrição:</strong> {solution.description}</p>
-        <p><strong>Enviado por:</strong> {solution.user?.name} - {solution.user?.phone}</p>
-        <p><strong>Status:</strong> {solution.status}</p>
-        <p><strong>Data:</strong> {new Date(solution.createdAt).toLocaleDateString("pt-BR")}</p>
+        <p>
+          <strong>Descrição:</strong> {solution.description}
+        </p>
+        <p>
+          <strong>Enviado por:</strong> {solution.user?.name} -{" "}
+          {solution.user?.phone}
+        </p>
+        <p>
+          <strong>Status:</strong> {solution.status}
+        </p>
+        <p>
+          <strong>Data:</strong>{" "}
+          {new Date(solution.createdAt).toLocaleDateString("pt-BR")}
+        </p>
 
         <div className={styles.buttons}>
           <button

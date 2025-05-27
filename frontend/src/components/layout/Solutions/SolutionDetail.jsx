@@ -23,6 +23,11 @@ const SolutionDetail = () => {
   if (!solutions.length) {
     return (
       <div className={styles.container}>
+         <div className={styles.header}>
+        <Link to="/myAppointments" className={styles.backButton}>
+          <FaArrowLeft /> Meus Agendamentos
+        </Link>
+      </div>
         <p>Carregando ou nenhuma solução encontrada...</p>
       </div>
     );
