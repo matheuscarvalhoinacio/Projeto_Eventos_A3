@@ -1,7 +1,10 @@
 import React from "react";
 import api from "../util/api";
-
+import useFlashMessage from "../hook/useFlashMessage";
+import { useNavigate } from "react-router-dom";
 export default function Suggestion() {
+  const { setFlashMessage } = useFlashMessage();
+  const navigate = useNavigate();
   async function createSuggestion(suggestion) {
     const token = localStorage.getItem("token");
 
@@ -11,32 +14,46 @@ export default function Suggestion() {
           Authorization: `Bearer ${token}`,
         },
       });
+
+      const { message } = response.data;
+      setFlashMessage(message || "Sugestão enviada com sucesso!", "success");
+      setTimeout(() => {
+        navigate("/myAppointments");
+      }, 2000);
       return response.data;
     } catch (error) {
-      console.error("Erro ao criar sugestão:", error);
+      const message =
+        error?.response?.data?.message || "Erro ao enviar sugestão!";
+      setFlashMessage(message, "error");
       throw error;
     }
   }
 
   async function GetSuggestion(suggestion) {
     try {
-      return api
-        .post("/Suggestion/GetSuggestion", suggestion)
-        .then((response) => {
-          return response.data;
-        });
+      const response = await api.post("/Suggestion/GetSuggestion", suggestion);
+      return response.data;
     } catch (error) {
-      console.log(error);
+      const message =
+        error?.response?.data?.message || "Erro ao buscar sugestões!";
+      setFlashMessage(message, "error");
     }
   }
+
   async function SetStatus(id, status) {
     try {
       const response = await api.patch(`/Suggestion/SetStatus/${id}`, {
         status,
       });
+
+      const { message } = response.data;
+      setFlashMessage(message || "Status atualizado!", "success");
+
       return response.data;
     } catch (error) {
-      console.log("Erro ao atualizar status:", error);
+      const message =
+        error?.response?.data?.message || "Erro ao atualizar status!";
+      setFlashMessage(message, "error");
       throw error;
     }
   }

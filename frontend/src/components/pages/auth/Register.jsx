@@ -6,7 +6,6 @@ import { Context } from "../../../context/UserContext";
 function Register() {
   const [user, setUser] = useState({});
   const { register } = useContext(Context);
-
   const tipos = ["Aluno", "Professor", "Faculdade", "Produtor Rural"];
 
   function handleChange(e) {
@@ -21,6 +20,7 @@ function Register() {
   function handleSubmit(e) {
     e.preventDefault();
     register(user);
+
   }
 
   return (

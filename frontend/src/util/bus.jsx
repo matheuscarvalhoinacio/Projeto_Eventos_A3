@@ -1,5 +1,5 @@
-import EventEmitter from 'eventemitter3';
+import mitt from 'mitt';
 
-const bus = new EventEmitter();
+const bus = mitt();
 
 export default bus;

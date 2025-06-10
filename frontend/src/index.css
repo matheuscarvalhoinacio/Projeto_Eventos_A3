@@ -3,3 +3,22 @@
     padding: 0;
     box-sizing: border-box;
 }
+.flash-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #eee;
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  z-index: 1000;
+  font-weight: bold;
+  color: #fff;
+}
+
+.flash-message.success {
+  background-color: #28a745;
+}
+
+.flash-message.error {
+  background-color: #dc3545;
+}

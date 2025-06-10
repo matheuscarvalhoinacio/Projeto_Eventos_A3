@@ -1,26 +1,22 @@
-import React, { useState, useContext } from 'react';
-import Style from './Suggestion.module.css';
-import {useParams} from 'react-router-dom'
-import { Context } from '../../../context/UserContext';
+import React, { useState, useContext } from "react";
+import Style from "./Suggestion.module.css";
+import { useParams } from "react-router-dom";
+import { Context } from "../../../context/UserContext";
 
 const Suggestion = () => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
   const { createSuggestion } = useContext(Context);
-  const {id} = useParams()
+  const { id } = useParams();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const suggestion = {
       title,
       description,
-      id
+      id,
     };
-
-   await createSuggestion(suggestion)
-   console.log(suggestion)
-
-   
+    await createSuggestion(suggestion);
   };
 
   return (
@@ -47,8 +43,6 @@ const Suggestion = () => {
           Enviar
         </button>
       </form>
-
-
     </div>
   );
 };

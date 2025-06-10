@@ -1,4 +1,3 @@
-// API
 import api from "../util/api";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -23,9 +22,8 @@ export default function useAuth() {
     let msgText = "Cadastro realizado com sucesso";
     let msgType = "success";
     try {
-      console.log(user);
       const data = await api.post("/users/register", user).then((response) => {
-        return response.data;
+         return response.data
       });
       authUser(data);
     } catch (error) {
@@ -69,5 +67,5 @@ export default function useAuth() {
 
     setFlashMessage(msgText, msgType);
   }
-  return { authenticated, register, logout, login, loading };
+  return { authenticated, register, logout, login, loading,setFlashMessage};
 }
